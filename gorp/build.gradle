@@ -1,0 +1,50 @@
+
+buildscript {
+  repositories {
+    mavenLocal()
+  }
+
+  dependencies {
+    classpath "com.temp:qux:0.0.1"
+  }
+}
+
+plugins {
+  id "maven-publish"
+}
+
+repositories {
+  mavenLocal()
+}
+
+apply plugin: "qux.greeting"
+
+group = "com.temp.bar"
+version = "0.0.1"
+
+dependencies {
+  'default' "com.temp.bar:bar:0.0.1"
+}
+
+tasks.register("installLibs", Copy) {
+  dependsOn configurations.default
+  destinationDir = file("${buildDir}/libs")
+  configurations.default.each { config ->
+    from zipTree(config)
+  }
+  doFirst {
+    destinationDir.deleteDir()
+  }
+}
+
+publishing {
+  publications {
+    main(MavenPublication) {
+      from components.quxComponent
+    }
+  }
+
+  repositories {
+    mavenLocal()
+  }
+}

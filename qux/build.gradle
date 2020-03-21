@@ -1,0 +1,25 @@
+
+plugins {
+    id 'java-gradle-plugin'
+    id 'groovy'
+    id "maven-publish"
+}
+
+group = "com.temp"
+version = "0.0.1"
+
+gradlePlugin {
+    plugins {
+        greeting {
+            id = 'qux.greeting'
+            implementationClass = 'qux.QuxPlugin'
+        }
+    }
+}
+
+publishing {
+  repositories {
+    mavenLocal()
+  }
+}
+

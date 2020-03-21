@@ -1,0 +1,35 @@
+
+buildscript {
+  repositories {
+    mavenLocal()
+  }
+
+  dependencies {
+    classpath "com.temp:qux:0.0.1"
+  }
+}
+
+plugins {
+  id "maven-publish"
+}
+
+apply plugin: "qux.greeting"
+
+repositories {
+  mavenLocal()
+}
+
+group = "com.temp.foo"
+version = "0.0.1"
+
+publishing {
+  publications {
+    main(MavenPublication) {
+      from components.quxComponent
+    }
+  }
+
+  repositories {
+    mavenLocal()
+  }
+}
