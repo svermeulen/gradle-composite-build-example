@@ -26,17 +26,6 @@ dependencies {
   'default' "com.temp.foo:foo:0.0.1"
 }
 
-tasks.register("installLibs", Copy) {
-  dependsOn configurations.default
-  destinationDir = file("${buildDir}/libs")
-  configurations.default.each { config ->
-    from zipTree(config)
-  }
-  doFirst {
-    destinationDir.deleteDir()
-  }
-}
-
 publishing {
   publications {
     main(MavenPublication) {
