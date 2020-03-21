@@ -26,14 +26,13 @@ public class QuxPlugin implements Plugin<Project> {
 
     def distZip = project.file("${project.buildDir}/dist.zip")
 
-    def myAttribute = Attribute.of("my.attribute.name", String)
-
     project.configurations {
       "default" {
         canBeConsumed = true
         canBeResolved = true
         attributes {
-          attribute(myAttribute, "my-value")
+          // Dummy attribute since gradle requires that we define at least one
+          attribute(Attribute.of("my.attribute.name", String), "my-value")
         }
       }
     }
