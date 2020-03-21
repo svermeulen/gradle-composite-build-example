@@ -13,7 +13,7 @@ plugins {
   id "maven-publish"
 }
 
-apply plugin: "qux.greeting"
+apply plugin: "qux"
 
 repositories {
   mavenLocal()

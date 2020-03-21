@@ -17,7 +17,7 @@ repositories {
   mavenLocal()
 }
 
-apply plugin: "qux.greeting"
+apply plugin: "qux"
 
 group = "com.temp.bar"
 version = "0.0.1"

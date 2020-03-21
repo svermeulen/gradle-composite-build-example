@@ -10,8 +10,8 @@ version = "0.0.1"
 
 gradlePlugin {
     plugins {
-        greeting {
-            id = 'qux.greeting'
+        qux {
+            id = 'qux'
             implementationClass = 'qux.QuxPlugin'
         }
     }
